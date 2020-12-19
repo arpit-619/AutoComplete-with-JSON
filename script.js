@@ -1,9 +1,7 @@
-//Get Countries From Json File
 const searchcountry = async (searchBox) => {
   const res = await fetch("../data/countries.json");
   const countries = await res.json();
 
-  //Get Entered Data
   let fits = countries.filter((country) => {
     const regex = new RegExp(`^${searchBox}`, "gi");
     return country.name.match(regex) || country.abbr.match(regex);
@@ -17,7 +15,6 @@ const searchcountry = async (searchBox) => {
   outputHtml(fits);
 };
 
-// show results in HTML
 const outputHtml = (fits) => {
   if (fits.length > 0) {
     const html = fits
